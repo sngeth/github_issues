@@ -9,6 +9,12 @@ defmodule GithubIssues.CLI do
   table of last _n_ issues in a github project
   """
 
+  def main(argv) do
+    argv
+    |> parse_args
+    |> process
+  end
+
   def run(argv) do
     argv
     |> parse_args
@@ -17,7 +23,7 @@ defmodule GithubIssues.CLI do
 
   def process(:help) do
     IO.puts """
-    usage:  issues <user> <project> [ count | #{@default_count} ]
+    usage:  github_issues <user> <project> [ count | #{@default_count} ]
     """
     System.halt(0)
   end
